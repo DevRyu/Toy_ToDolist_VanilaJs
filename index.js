@@ -1,8 +1,8 @@
 // console.log(document);
 const title = document.querySelector("#title");
 
-function handleResize() {
-  console.log("i have been resize");
+function handClick() {
+  console.log();
 }
 
-window.addEventListener("resize", handleResize);
+title.addEventListener("click", handClick);
