@@ -2,7 +2,7 @@
 const title = document.querySelector("#title");
 
 function handClick() {
-  title.style.color = "red";
+  title.style.color = "blue";
 }
 
 title.addEventListener("click", handClick);
