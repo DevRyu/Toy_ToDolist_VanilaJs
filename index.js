@@ -21,3 +21,5 @@ function init() {
   title.addEventListener("click", handClick);
 }
 init();
+
+onf.addEventListener("offline");
