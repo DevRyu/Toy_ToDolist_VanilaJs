@@ -11,3 +11,7 @@ h1 {
 .clicked {
   color: 7f8c8d;
 }
+
+.btn {
+  cursor: pointer;
+}
