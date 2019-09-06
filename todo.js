@@ -4,8 +4,40 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = "toDos";
 
-const toDos = [];
+// function filterFn (toDo){
+//     return toDo.id === 1
+//     array=[];
+
+// }
+
+let toDos = [];
 //어레이에 넣어줘서 관리하자
+
+function deleteToDo(event) {
+  //   console.log(event.target.parentNode);
+  //1.어떤이벤트인지건지 전체 다보고싶으면 dir
+  //2.찾았으면 log로보자고
+  //3.또는MDN구글링
+  const btn = event.target;
+  const li = btn.parentNode;
+  toDoList.removeChild(li);
+  //삭제는 잘되지만 새로고침시 안없어진다
+  const cleanToDos = toDos.filter(function(toDo) {
+    return toDo.id !== parseInt(li.id);
+  });
+  //위에서 투두리스트에 자식 li가 하나삭제되면 밑에서 비교해주면되겟지?
+  // 백퍼다르니 삭제되겟지
+  toDos = cleanToDos;
+  //cleanToDos는 이제 4지만 toDos는 3이니까 동기화시키면되겟지
+  saveToDos();
+  //saveToDos로 저장시키자
+
+  //다른 방법 :필터는 함수하나를 실행시킨다
+  //마치 foreach에서 펑션을 실행하는것과 같이 각각의 item에실행
+  // 7번 줄 filterFn을 toDos.filter(filterFn)하면 여기서 true 인것만 리턴할거야
+  // 7번 에서 toDo의 id가 1일때만 리턴할거라는 말인거지
+  // 필터는 어레이의 모든아이템을 통해 함수를 실행하고 true인 아이템을만 가지고 array생성후 리턴할거야
+}
 
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
@@ -22,6 +54,8 @@ function paintToDo(text) {
   // li에도 아이디를 주기위해 만들엇다.
   //!!! 함수가 두번째 실행되도 재선언과 할당이 되니 하나 하나 추가될때마다 값은 바뀌겟네
   delBtn.innerHTML = "🙅‍";
+  delBtn.addEventListener("click", deleteToDo);
+  //삭제할때 생성되는 이벤트리스너
   //X 버튼 //inner는 속성
   span.innerText = text;
   //span 내 속성
